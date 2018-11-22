@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Jeu 22 Novembre 2018 à 10:03
--- Version du serveur :  10.3.11-MariaDB-1:10.3.11+maria~bionic-log
+-- Généré le :  Jeu 22 Novembre 2018 à 12:44
+-- Version du serveur :  10.3.10-MariaDB-1:10.3.10+maria~bionic-log
 -- Version de PHP :  7.2.10-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `annuaire_film`
+-- Base de données :  `annuaire_films`
 --
 
 -- --------------------------------------------------------
@@ -47,10 +47,7 @@ INSERT INTO `films` (`id`, `titre`, `description`, `annee`, `realisateur`) VALUE
 (6, 'Thugs of Hindostan', 'La guerre pour la liberté sur terre se joue en pleine mer. Au 18ème siècle, la British Navy est confrontée à Khudabaksh, un \"Thug des mers\" qui se bat pour libérer son pays. Les anglais, ne sachant comment l\'affronter, font appelle à un autre Thug, Firangi Mallah.', 2018, 'Vijay Krishna Acharya'),
 (7, 'Dumbo', 'Les enfants de Holt Farrier, ex-artiste de cirque chargé de s’occuper d’un éléphanteau dont les oreilles démesurées sont la risée du public, découvrent que ce dernier sait voler…', 2019, 'Tim Burton'),
 (8, 'La note bleue', 'Nohant 1846. Le dernier jour d\'une liaison qui dura huit ans entre George Sand et Frederic Chopin et qui vit naitre leurs plus belles oeuvres.', 1991, 'Andrzej Zulawski'),
-(9, 'Airlift', '02 août 1990 : les troupes irakiennes envahissent le Koweït. L\'Inde vote à l\'ONU les sanctions contre l\'Irak et, prend en charge l\'évacuation de la centaine de milliers de ses ressortissants expatriés. Ainsi l’Inde aura mis en place le plus grand pont aérien et humanitaire jamais organisé au monde.', 2016, 'Raja Menon'),
-(10, 'Alita: Battle Angel', 'Au vingt-sixième siècle, un scientifique sauve Alita, une jeune cyborg inerte abandonnée dans une décharge. Ramenée à la vie, elle doit découvrir le mystère de ses origines et le monde complexe dans lequel elle se trouve, afin de protéger ses nouveaux amis contre les forces sombres lancées à sa poursuite.', 2019, 'Robert Rodriguez'),
-(11, 'Aquaman', 'Personnage légendaire depuis 70 ans, Aquaman est le Roi des Sept Mers, régnant à contrecœur sur Atlantis. Pris en étau entre les Terriens qui détruisent constamment la mer et les habitants d\'Atlantis prêts à se révolter, Aquaman doit protéger la planète tout entière…', 2018, 'James Wan\r\n'),
-(12, 'Le Grinch', 'Chaque année à Noël, les Chous viennent perturber la tranquillité solitaire du Grinch avec des célébrations toujours plus grandioses, brillantes et bruyantes. Quand les Chous déclarent qu’ils vont célébrer Noël trois fois plus fort cette année, le Grinch réalise qu’il n’a plus qu’une solution pour retrouver la paix et la tranquillité: il doit voler Noël.', 2018, 'Yarrow Cheney');
+(9, 'Airlift', '02 août 1990 : les troupes irakiennes envahissent le Koweït. L\'Inde vote à l\'ONU les sanctions contre l\'Irak et, prend en charge l\'évacuation de la centaine de milliers de ses ressortissants expatriés. Ainsi l’Inde aura mis en place le plus grand pont aérien et humanitaire jamais organisé au monde.', 2016, 'Raja Menon');
 
 -- --------------------------------------------------------
 
@@ -87,13 +84,39 @@ INSERT INTO `film_genre` (`film`, `genre`) VALUES
 (8, 7),
 (8, 8),
 (9, 6),
-(9, 7),
-(10, 10),
-(10, 1),
-(11, 1),
-(11, 4),
-(12, 2),
-(12, 9);
+(9, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `film_realisateur`
+--
+
+CREATE TABLE `film_realisateur` (
+  `film` int(4) NOT NULL,
+  `realisateur` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `film_realisateur`
+--
+
+INSERT INTO `film_realisateur` (`film`, `realisateur`) VALUES
+(1, 1),
+(2, 2),
+(2, 3),
+(3, 4),
+(4, 5),
+(5, 6),
+(5, 7),
+(5, 8),
+(6, 9),
+(7, 10),
+(8, 11),
+(9, 12),
+(10, 13),
+(11, 14),
+(12, 15);
 
 -- --------------------------------------------------------
 
@@ -121,6 +144,38 @@ INSERT INTO `genre` (`id`, `type`) VALUES
 (8, 'Romance'),
 (9, 'Famille'),
 (10, 'Science-fiction');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `realisateur`
+--
+
+CREATE TABLE `realisateur` (
+  `id` int(4) NOT NULL,
+  `realisateur` char(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `realisateur`
+--
+
+INSERT INTO `realisateur` (`id`, `realisateur`) VALUES
+(1, 'Steven Caple Jr'),
+(2, 'Louis Clichy'),
+(3, 'Alexandre Astier'),
+(4, 'Dwight H. Little'),
+(5, 'Roland Emmerich'),
+(6, 'Bob Persichetti'),
+(7, 'Petter Ramsey'),
+(8, 'Rodney Rothman'),
+(9, 'Vijay Krishna Acharya'),
+(10, 'Tim Burton'),
+(11, 'Andrzej Zulawski'),
+(12, 'Raja Menon'),
+(13, 'Robert Rodriguez'),
+(14, 'James Wan'),
+(15, 'Yarrow Cheney');
 
 --
 -- Index pour les tables exportées
